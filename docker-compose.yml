@@ -1,0 +1,16 @@
+services:
+  bdf-editor:
+    build: .
+    container_name: bdf-editor
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >
+          wget -q -O - http://localhost/ > /dev/null 2>&1 || exit 1
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

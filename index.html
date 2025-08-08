@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1"
+    />
+    <title>BDF Font Editor</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">BDF Font Editor</div>
+
+      <div class="actions">
+        <label class="btn">
+          Load BDF
+          <input id="fileInput" type="file" accept=".bdf,.BDF,text/plain" />
+        </label>
+        <button id="exportBtn" class="btn primary">Export BDF</button>
+        <button id="newFontBtn" class="btn">New Font</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar">
+        <section class="panel">
+          <h3>Font</h3>
+          <div class="field">
+            <label for="fontName">Name</label>
+            <input id="fontName" type="text" />
+          </div>
+
+          <div class="grid3">
+            <div class="field">
+              <label for="sizePt">Size pt</label>
+              <input id="sizePt" type="number" step="1" />
+            </div>
+            <div class="field">
+              <label for="sizeX">X res</label>
+              <input id="sizeX" type="number" step="1" />
+            </div>
+            <div class="field">
+              <label for="sizeY">Y res</label>
+              <input id="sizeY" type="number" step="1" />
+            </div>
+          </div>
+
+          <div class="grid4">
+            <div class="field">
+              <label for="bbxW">BBX W</label>
+              <input id="bbxW" type="number" step="1" />
+            </div>
+            <div class="field">
+              <label for="bbxH">BBX H</label>
+              <input id="bbxH" type="number" step="1" />
+            </div>
+            <div class="field">
+              <label for="bbxX">BBX xoff</label>
+              <input id="bbxX" type="number" step="1" />
+            </div>
+            <div class="field">
+              <label for="bbxY">BBX yoff</label>
+              <input id="bbxY" type="number" step="1" />
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="glyphsHeader">
+            <h3>Glyphs</h3>
+            <div>
+              <button id="addGlyphBtn" class="btn small">Add</button>
+              <button id="delGlyphBtn" class="btn small">Del</button>
+            </div>
+          </div>
+          <div id="glyphList" class="glyphList"></div>
+        </section>
+      </aside>
+
+      <section class="editor">
+        <section class="panel">
+          <div class="glyphToolbar">
+            <div class="grid4">
+              <div class="field">
+                <label for="gName">Name</label>
+                <input id="gName" type="text" />
+              </div>
+              <div class="field">
+                <label for="gEnc">Encoding</label>
+                <input id="gEnc" type="number" />
+              </div>
+              <div class="field">
+                <label for="gDWX">DWIDTH X</label>
+                <input id="gDWX" type="number" />
+              </div>
+              <div class="field">
+                <label for="gDWY">DWIDTH Y</label>
+                <input id="gDWY" type="number" />
+              </div>
+            </div>
+
+            <div class="grid4">
+              <div class="field">
+                <label for="gBW">BBX W</label>
+                <input id="gBW" type="number" />
+              </div>
+              <div class="field">
+                <label for="gBH">BBX H</label>
+                <input id="gBH" type="number" />
+              </div>
+              <div class="field">
+                <label for="gBX">BBX xoff</label>
+                <input id="gBX" type="number" />
+              </div>
+              <div class="field">
+                <label for="gBY">BBX yoff</label>
+                <input id="gBY" type="number" />
+              </div>
+            </div>
+
+            <div class="controlsRow">
+              <div class="left">
+                <button id="clearGlyphBtn" class="btn">Clear</button>
+                <button id="invertGlyphBtn" class="btn">Invert</button>
+              </div>
+              <div class="right">
+                <label for="zoomRange">Zoom</label>
+                <input
+                  id="zoomRange"
+                  type="range"
+                  min="8"
+                  max="48"
+                  step="1"
+                  value="22"
+                />
+                <label>
+                  <input id="showGridChk" type="checkbox" checked />
+                  Grid
+                </label>
+                <label>
+                  <input id="showAxesChk" type="checkbox" checked />
+                  Axes
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="canvasWrap">
+            <canvas id="glyphCanvas" width="640" height="480"></canvas>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Preview</h3>
+          <div class="controlsRow">
+            <input
+              id="previewText"
+              type="text"
+              value="The quick brown fox 0123456789"
+            />
+            <label for="previewScale">Scale</label>
+            <input
+              id="previewScale"
+              type="range"
+              min="1"
+              max="8"
+              step="1"
+              value="2"
+            />
+          </div>
+          <div class="canvasWrap">
+            <canvas id="previewCanvas" width="900" height="180"></canvas>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>
+        Tip: Left-click to draw. Drag to paint. Right-click to erase.
+      </span>
+    </footer>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
