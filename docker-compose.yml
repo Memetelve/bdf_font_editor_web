@@ -3,7 +3,7 @@ services:
     build: .
     container_name: bdf-editor
     ports:
-      - "8080:80"
+      - "8123:80"
     restart: unless-stopped
     healthcheck:
       test:
